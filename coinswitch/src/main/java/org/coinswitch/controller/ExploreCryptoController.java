@@ -49,10 +49,10 @@ public class ExploreCryptoController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@GetMapping("/getCurrencyByKeyword")
-	public ResponseEntity<List<CryptoCurrency>> getCurrencyBycryptoSymbol(@ApiParam(value = "Currency By CryptoSymbol", required = true) @PathVariable("crypto_symbol") String  crypto_symbol){
+	@GetMapping("/getCurrencyByKeyword/{cryptoSymbol}")
+	public ResponseEntity<List<CryptoCurrency>> getCurrencyBycryptoSymbol(@ApiParam(value = "Currency By CryptoSymbol", required = true) @PathVariable("cryptoSymbol") String  cryptoSymbol){
 		
-		List<CryptoCurrency> currency = cryptoRepo.findBycryptoSymbol(crypto_symbol);
+		List<CryptoCurrency> currency = cryptoRepo.findBycryptoSymbol(cryptoSymbol);
 		
 		return new ResponseEntity<List<CryptoCurrency>>(currency, HttpStatus.OK);
 		
